@@ -6,7 +6,7 @@ then
   exit 1
 fi
 
-gcc -o mmult mmult.c -lprofiler
+gcc -fopenmp -o mmult mmult.c -lprofiler
 ./mmult $1
 google-pprof --text mmult mmult.prof
 

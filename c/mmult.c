@@ -27,6 +27,7 @@ void mmult_v0(int m, int k, int n, int *a_ptr, int *b_ptr, int *c_ptr)
 void mmult_v1(int m, int k, int n, int *a_ptr, int *b_ptr, int *c_ptr)
 {
   int i, j, z;
+  #pragma omp parallel for private (i, j, z)
   for (i=0; i<m; i+=TILE_SIZE)
   {
     for (j=0; j<n; j+=TILE_SIZE)
@@ -58,6 +59,7 @@ void mmult_v1(int m, int k, int n, int *a_ptr, int *b_ptr, int *c_ptr)
 void mmult_v2(int m, int k, int n, int *a_ptr, int *b_ptr, int *c_ptr)
 {
   int i, j, z;
+  #pragma omp parallel for private (i, j, z)
   for (i=0; i<m; i+=TILE_SIZE)
   {
     for (j=0; j<n; j+=TILE_SIZE)
@@ -97,6 +99,7 @@ void mmult_v2(int m, int k, int n, int *a_ptr, int *b_ptr, int *c_ptr)
 void mmult_v3(int m, int k, int n, int *a_ptr, int *b_ptr, int *c_ptr)
 {
   int i, j, z;
+  #pragma omp parallel for private (i, j, z)
   for (i=0; i<m; i+=TILE_SIZE)
   {
     for (j=0; j<n; j+=TILE_SIZE)
